@@ -11,7 +11,7 @@ x,y = np.genfromtxt("gedaempft_werte_alles_vor_t=0_geloescht.txt", unpack=True)
 plt.plot(x,y, "rx", label="Messwerte")
 plt.xlabel("$t/s$")
 plt.ylabel("$U_A/V$")
-plt.title("gedaempfte schwingung h), also ausgangsspannung U_A als funktion der zeit")
+#plt.title("gedaempfte schwingung h), also ausgangsspannung U_A als funktion der zeit")
 
 #xmarks macht aufeinmal nix mehr??
 #xmarks=np.arange(-0.01, 0.05+0.001, 0.01)#wie np.range nur mit floats,
@@ -38,8 +38,9 @@ errors = np.sqrt(np.diag(covariance))
 print ("U0=",params[0],"+-",errors[0],"   ", "omega=",params[2],"+-",errors[2],"   ", "b=",params[3],"+-",errors[3],"   ", "phi=",params[1],"+-",errors[1])#fitvariableen mit absolutem fehler
 plt.plot (x, fit(x,*params), "b-", label="Fit")#plot fertige fitfkt/ausgleichfkt
 
-plt.plot(x, params[0]*np.exp(-params[3]*x), "g-")#nur die daempfung/e-fkt
+plt.plot(x, params[0]*np.exp(-params[3]*x), "g-", label="Daempfung")#nur die daempfung/e-fkt
 #U0*np.exp(-b*x) geht nicht, weil b und U0 nicht definiert
+#ok, nur die daempfung ist e fkt ohne amplitude als vorfaktor
 
 
 '''
